@@ -61,10 +61,9 @@ class HomeViewController: UIViewController, PKCanvasViewDelegate, UIImagePickerC
     func setupTopBar() {
         topBar = UIView()
         topBar.translatesAutoresizingMaskIntoConstraints = false
-        topBar.backgroundColor = .clear  // Top Bar totalmente transparente
+        topBar.backgroundColor = .clear  
         view.addSubview(topBar)
         
-        // Botón para crear un nuevo diseño "New"
         let newDesignButton = UIButton(type: .system)
         newDesignButton.setTitle("New", for: .normal)
         newDesignButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
@@ -72,7 +71,6 @@ class HomeViewController: UIViewController, PKCanvasViewDelegate, UIImagePickerC
         newDesignButton.addTarget(self, action: #selector(newDesign), for: .touchUpInside)
         topBar.addSubview(newDesignButton)
         
-        // Botón "Add" para cargar una imagen
         plusButton = UIButton(type: .system)
         plusButton.setTitle("Add", for: .normal)
         plusButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
@@ -92,8 +90,6 @@ class HomeViewController: UIViewController, PKCanvasViewDelegate, UIImagePickerC
         saveButton.addTarget(self, action: #selector(saveDrawing), for: .touchUpInside)
         topBar.addSubview(saveButton)
         
-        // Alineamos todos los botones a la derecha, en el siguiente orden:
-        // saveButton -> deleteButton -> addButton -> newDesignButton
         NSLayoutConstraint.activate([
             topBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             topBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -111,7 +107,7 @@ class HomeViewController: UIViewController, PKCanvasViewDelegate, UIImagePickerC
             
             newDesignButton.trailingAnchor.constraint(equalTo: plusButton.leadingAnchor, constant: -16),
             newDesignButton.centerYAnchor.constraint(equalTo: topBar.centerYAnchor),
-            // Se evita que los botones se extiendan demasiado hacia la izquierda
+            
             newDesignButton.leadingAnchor.constraint(greaterThanOrEqualTo: topBar.leadingAnchor, constant: 16)
         ])
     }
@@ -197,7 +193,7 @@ class HomeViewController: UIViewController, PKCanvasViewDelegate, UIImagePickerC
         canvasView.drawing = PKDrawing()
     }
     
-    // Método para crear un nuevo diseño: elimina la imagen de fondo y reinicia el dibujo.
+    
     @objc func newDesign() {
         backgroundImageView.image = nil
         canvasView.drawing = PKDrawing()
@@ -222,7 +218,7 @@ class HomeViewController: UIViewController, PKCanvasViewDelegate, UIImagePickerC
         let rect = CGRect(origin: .zero, size: image.size)
         UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
         image.draw(in: rect)
-        // Superponer un rectángulo blanco con alfa 0.3 para un efecto tenue
+        
         UIColor(white: 1.0, alpha: 0.3).setFill()
         UIRectFillUsingBlendMode(rect, .sourceAtop)
         let tintedImage = UIGraphicsGetImageFromCurrentImageContext()
