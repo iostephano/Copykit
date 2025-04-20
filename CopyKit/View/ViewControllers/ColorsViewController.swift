@@ -10,7 +10,6 @@ class ColorsViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     var collectionView: UICollectionView!
     
-    // Arreglo de colores fijos
     let fixedColors: [UIColor] = [
         .black, .darkGray, .gray, .lightGray,
         .red, .orange, .yellow, .green,
@@ -18,7 +17,6 @@ class ColorsViewController: UIViewController, UICollectionViewDelegate, UICollec
         .magenta
     ]
     
-    // Total de ítems: colores fijos + 1 para la opción personalizada
     var totalItems: Int {
         return fixedColors.count + 1
     }
@@ -62,7 +60,6 @@ class ColorsViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColorCell.reuseIdentifier, for: indexPath) as! ColorCell
         
-        // Si es un color fijo, se configura normalmente; de lo contrario, se muestra la opción personalizada
         if indexPath.item < fixedColors.count {
             cell.configure(with: fixedColors[indexPath.item])
         } else {
@@ -81,7 +78,6 @@ class ColorsViewController: UIViewController, UICollectionViewDelegate, UICollec
             BrushSettings.shared.color = selectedColor
             NotificationCenter.default.post(name: NSNotification.Name("BrushSettingsChanged"), object: nil)
             
-            // Actualizar el ícono de la pestaña "Color" con el nuevo color
             if let tabBar = tabBarController?.tabBar, let colorsTab = tabBar.items?[3] {
                 let newColorIcon = UIImage(systemName: "circle.fill")?
                     .withTintColor(selectedColor, renderingMode: .alwaysOriginal)
@@ -89,10 +85,9 @@ class ColorsViewController: UIViewController, UICollectionViewDelegate, UICollec
                 colorsTab.selectedImage = newColorIcon
             }
             
-            // Regresar automáticamente a la pestaña Home (canvas)
             tabBarController?.selectedIndex = 0
         } else {
-            // Se abre el selector de color personalizado
+
             let colorPicker = UIColorPickerViewController()
             colorPicker.delegate = self
             present(colorPicker, animated: true, completion: nil)
@@ -108,7 +103,7 @@ extension ColorsViewController: UIColorPickerViewControllerDelegate {
         BrushSettings.shared.color = selectedColor
         NotificationCenter.default.post(name: NSNotification.Name("BrushSettingsChanged"), object: nil)
         
-        // Actualizar el ícono de la pestaña "Color" con el nuevo color
+
         if let tabBar = tabBarController?.tabBar, let colorsTab = tabBar.items?[3] {
             let newColorIcon = UIImage(systemName: "circle.fill")?
                 .withTintColor(selectedColor, renderingMode: .alwaysOriginal)
@@ -116,13 +111,13 @@ extension ColorsViewController: UIColorPickerViewControllerDelegate {
             colorsTab.selectedImage = newColorIcon
         }
         
-        // Cerrar el picker y regresar automáticamente a Home
+
         viewController.dismiss(animated: true) { [weak self] in
             self?.tabBarController?.selectedIndex = 0
         }
     }
     
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
-        // Opcional: aquí puedes actualizar el color en tiempo real si lo deseas.
+    
     }
 }
