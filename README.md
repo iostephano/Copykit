@@ -1,66 +1,48 @@
-# ✏️ Copykit – Aprende a Dibujar con Apple Pencil
+Copykit – Learn to Draw with Apple Pencil
 
-**Copykit** es una aplicación para iOS diseñada para ayudar a los usuarios principiantes a mejorar sus habilidades de dibujo con el Apple Pencil. La app permite **calcar imágenes** precargadas, facilitando el aprendizaje y la práctica del trazo con herramientas intuitivas como lápiz, borrador y selector de colores.
+Copykit is an iOS application designed to help beginner users improve their drawing skills with the Apple Pencil. The app allows users to trace preloaded images, making it easier to learn and practice strokes with intuitive tools like pencil, eraser, and color picker.
+Key Features
 
-## 🎨 Características principales
+Draw over preloaded images: Import images from your gallery or use photos taken with the camera.
+Intuitive drawing tools: Use pencil, eraser, and customize stroke thickness and opacity.
+Advanced color picker: Choose from predefined colors or use a custom color selector.
+Interface optimized for Apple Pencil: Supports pressure-sensitive strokes.
+Save and share your drawings: Export your work and save it to your gallery.
+Installation
 
-✅ **Dibuja sobre imágenes precargadas**: Importa imágenes desde tu galería o usa fotos tomadas con la cámara.
+Follow these steps to clone and run the project in your development environment:
+Clone the repository:
+git clone https://github.com/your_username/copykit.git
+Open the project in Xcode.
+Make sure you are using iOS 14+ and Swift 5.
+Run the app on a simulator or a real device with Apple Pencil.
+Code Structure
 
-✅ **Herramientas de dibujo intuitivas**: Usa lápiz, borrador y personaliza el grosor y opacidad del trazo.
-
-✅ **Selector de colores avanzado**: Escoge entre colores predefinidos o usa un selector de color personalizado.
-
-✅ **Interfaz optimizada para Apple Pencil**: Compatible con trazos sensibles a la presión.
-
-✅ **Guarda y comparte tus dibujos**: Exporta tu trabajo y guárdalo en tu galería.
-
-## 📥 Instalación
-
-Sigue estos pasos para clonar y ejecutar el proyecto en tu entorno de desarrollo:
-
-1. Clona el repositorio:
-    
-    ```bash
-    git clone <https://github.com/tu_usuario/copykit.git>
-    
-    ```
-    
-2. Abre el proyecto en **Xcode**.
-3. Asegúrate de usar **iOS 14+** y **Swift 5**.
-4. Ejecuta la aplicación en un simulador o en un dispositivo real con Apple Pencil.
-
-## 📂 Estructura del código
-
-```bash
 📂 Copykit
 ├── 📂 Controllers
-│   ├── HomeViewController.swift      # Lienzo principal para dibujar
-│   ├── MainTabBarController.swift    # Barra de herramientas con lápiz, borrador y colores
-│   ├── BrushViewController.swift     # Configuración del grosor y opacidad del trazo
-│   ├── EraserViewController.swift    # Configuración del borrador
-│   ├── ColorsViewController.swift    # Selector de colores
+│   ├── HomeViewController.swift      # Main drawing canvas
+│   ├── MainTabBarController.swift    # Toolbar with pencil, eraser, and color tools
+│   ├── BrushViewController.swift     # Stroke thickness and opacity settings
+│   ├── EraserViewController.swift    # Eraser settings
+│   ├── ColorsViewController.swift    # Color picker
 ├── 📂 Models
-│   ├── ActiveTool.swift              # Enum de herramientas activas
-│   ├── BrushSettings.swift           # Configuración del pincel
-│   ├── EraserSettings.swift          # Configuración del borrador
+│   ├── ActiveTool.swift              # Enum for active tools
+│   ├── BrushSettings.swift           # Brush configuration
+│   ├── EraserSettings.swift          # Eraser configuration
 ├── 📂 Views
-│   ├── ColorCell.swift               # Vista para la selección de colores
-├── AppDelegate.swift                  # Configuración de la app
-├── SceneDelegate.swift                # Gestión del ciclo de vida de la app
-```
+│   ├── ColorCell.swift               # View for color selection
+├── AppDelegate.swift                 # App setup
+├── SceneDelegate.swift               # App lifecycle management
+Technologies Used
 
-## ⚙️ Tecnologías utilizadas
+Swift 5
+PencilKit – For the drawing canvas and Apple Pencil features
+UIKit – For user interface and event handling
+UIImagePickerController – For importing images from gallery or camera
+NotificationCenter – For managing real-time events and updates
+Project Goal
 
-- 🛠 **Swift 5**
-- 🖌 **PencilKit** – Para el lienzo de dibujo y herramientas avanzadas de Apple Pencil
-- 🎨 **UIKit** – Para la interfaz de usuario y control de eventos
-- 📷 **UIImagePickerController** – Para cargar imágenes desde la galería o cámara
-- 🔔 **NotificationCenter** – Para gestionar eventos y actualizaciones en tiempo real
+Copykit is designed for digital drawing beginners, offering a simple and intuitive tool to learn the technique of tracing images using Apple Pencil. Ideal for aspiring artists, art students, or anyone looking to improve their line precision.
+License
 
-## 🎯 Objetivo del proyecto
-
-Copykit está diseñado para **principiantes en el dibujo digital**, ofreciendo una herramienta sencilla e intuitiva para aprender la técnica de **calcar imágenes** usando Apple Pencil. Ideal para artistas en formación, estudiantes de arte o cualquier persona que quiera mejorar su precisión en el trazo.
-
-## 📜 Licencia
-
-Este proyecto está bajo la licencia **MIT**.
+This project is licensed under the MIT License.
