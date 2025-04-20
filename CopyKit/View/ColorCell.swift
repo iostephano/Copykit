@@ -20,13 +20,11 @@ class ColorCell: UICollectionViewCell {
     }
     
     func configure(with color: UIColor) {
-        // Elimina subviews previos (por si la célula se reutiliza)
         contentView.subviews.forEach { $0.removeFromSuperview() }
         contentView.backgroundColor = color
     }
     
     func configureAsCustom() {
-        // Elimina subviews anteriores y configura la célula para mostrar un ícono de "Add"
         contentView.subviews.forEach { $0.removeFromSuperview() }
         contentView.backgroundColor = .lightGray
         let plusLabel = UILabel(frame: contentView.bounds)
