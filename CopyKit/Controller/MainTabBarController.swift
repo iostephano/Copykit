@@ -14,7 +14,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         self.delegate = self
         
-        // Configurar apariencia del Tab Bar (iOS 13+)
         if #available(iOS 13.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithDefaultBackground()
@@ -24,7 +23,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             }
         }
         
-        // Pestaña "Home"
         homeVC = HomeViewController()
         homeVC.tabBarItem = UITabBarItem(
             title: nil,
@@ -33,7 +31,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         )
         homeVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         
-        // Pestaña "Pencil" (dummy)
         let pencilDummyVC = UIViewController()
         pencilDummyVC.tabBarItem = UITabBarItem(
             title: nil,
@@ -42,7 +39,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         )
         pencilDummyVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         
-        // Pestaña "Eraser" (dummy)
         let eraserDummyVC = UIViewController()
         eraserDummyVC.tabBarItem = UITabBarItem(
             title: nil,
@@ -51,7 +47,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         )
         eraserDummyVC.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         
-        // Pestaña "Colors" usando ColorsViewController real
         let colorsVC = ColorsViewController()
         let defaultColorIcon = UIImage(systemName: "circle.fill")?
             .withTintColor(BrushSettings.shared.color, renderingMode: .alwaysOriginal)
@@ -66,7 +61,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         selectedIndex = 0
     }
     
-    // Solo se interceptan las pestañas de Pencil y Eraser; para Home y Colors se muestran sus controladores reales
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if let index = viewControllers?.firstIndex(of: viewController) {
             if index == 1 {
@@ -78,7 +72,6 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             } else if index == 0 {
                 homeVC.setActiveTool(.none)
             }
-            // Para el índice 3 (Colors) no se realiza acción especial, se muestra ColorsViewController.
         }
     }
 }
